@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="ano_novo.css">
+</head>
+<body>
+  <div id="container">
+    <h1><span>Ano Novo</span></h1></div>
+    <div class="tempo_faltando">
+      <div id="dias"></div>
+      <div id="horas"></div>
+      <div id="minutos"></div>
+      <div id="segundos"></div>
+  </div>
+  <script>
+    var now = new Date();
+    var ano_novo = new Date(2021, 00, 01);
+
+    var Tempo_atual = now.getTime();
+
+    var Tempo_evento = ano_novo.getTime();
+    var Tempo_restante = Tempo_evento - Tempo_atual;
+    var segundo = Math.floor((Tempo_restante / 1000) % 60);
+    var minuto = Math.floor((Tempo_restante / 1000 / 60) % 60);
+    var hora = Math.floor((Tempo_restante / (1000 * 60 * 60)) % 24);
+    var dia = Math.floor(Tempo_restante / (1000 * 60 * 60 * 24));
+    document.getElementById("segundos").innerHTML = segundo
+    document.getElementById("minutos").innerHTML = minuto
+    document.getElementById("horas").innerHTML = hora
+    document.getElementById("dias").innerHTML = dia
+  </script>
+</body>
+
+</html>

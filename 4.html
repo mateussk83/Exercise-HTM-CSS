@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+    
+</head>
+<body>
+    <form  name="Email/Password">
+        Email:
+        <input type="text" value="" name="email" /> <br> <br>
+        Password:
+        <input type="text" value="" name="password" /> <br> <br>
+        <button onclick="envio(event)">Enviar Formulario</button>
+    </form>
+        
+        <script>
+            const envio = (e) => {
+                e.preventDefault();
+                var a = document.forms["Email/Password"]["email"];
+                var b = document.forms["Email/Password"]["password"];
+                var request = new XMLHttpRequest();
+                request.open("POST","http://52.91.139.190/fsapi/users/login");
+                
+                request.setRequestHeader("Content-type","application/json");
+                const body = JSON.stringify({
+                    "email": a.value,
+                    "password": b.value
+                })
+
+                request.send(body);
+                console.log("body:",body);
+            }
+        </script>
+</body>
+</html>
